@@ -267,6 +267,14 @@
 <button class="chat-toggle" id="chatToggle">💬</button>
 </footer>
 
+ <div class="container">
+        <h1 id="title">Developer Hub</h1>
+        <p>Full-Stack & AI Integration</p>
+        
+        <button id="action-btn">Initialize System</button>
+        
+        <div id="status-msg"></div>
+    </div>
 
 <style>
 /* Reset & Body */
@@ -1053,6 +1061,71 @@ body::before {
     border-radius: 8px;
     cursor: pointer;
 }
+
+ :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --accent: #3498db;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        button {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        #status-msg {
+            margin-top: 1rem;
+            height: 20px;
+            font-size: 0.8rem;
+            color: #2ecc71;
+        }
 </style>
 
 <script>
@@ -1129,8 +1202,28 @@ sendBtn.onclick = handleSearch;
 userInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') handleSearch();
 });
+
+ document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('action-btn');
+            const status = document.getElementById('status-msg');
+            const title = document.getElementById('title');
+
+            btn.addEventListener('click', () => {
+                // Change UI state
+                status.textContent = "System active. Welcome, Engineer.";
+                btn.style.borderColor = "#2ecc71";
+                btn.style.color = "#2ecc71";
+                
+                // Simple console log for debugging
+                console.log("Interface interaction detected.");
+                
+                // Optional: Revert after 3 seconds
+                setTimeout(() => {
+                    status.textContent = "";
+                }, 3000);
+            });
+        });
 </script>
-<script async src="https://cse.google.com/cse.js?cx=YOUR_SEARCH_ENGINE_ID"></script>
-<div class="gcse-search"></div>
+
 </body>
 </html>
