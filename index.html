@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shor Globe | Technical HD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=JetBrains+Mono:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="preloader">
+    <div class="hd-grid"></div>
+
+    <div class="hub-wrapper">
+        <svg class="orbital-svg" viewBox="0 0 200 200">
+            <circle class="ring ring-outer" cx="100" cy="100" r="90" />
+            <circle class="ring ring-middle" cx="100" cy="100" r="70" stroke-dasharray="10 20" />
+            <circle class="ring ring-inner" cx="100" cy="100" r="45" />
+            <line class="scan-line" x1="100" y1="100" x2="100" y2="10" />
+        </svg>
+        
+        <div class="core-text">
+            <h1 class="brand-title">SHOR<span>GLOBE</span></h1>
+            <div class="binary-stream" id="binary">011001 101100</div>
+        </div>
+    </div>
+
+    <div class="hud-corners">
+        <div class="corner top-l">STATUS: ENCRYPTING</div>
+        <div class="corner top-r" id="coord">X: 0.00 Y: 0.00</div>
+        <div class="corner bot-l">S.G. NODE: 04-B</div>
+        <div class="corner bot-r">HD_BOOT_MODE: TRUE</div>
+    </div>
+</div>
+
+<style>
+:root {
+    --accent: #b5835a;
+    --bg: #030303;
+}
+
+body { margin: 0; background: var(--bg); overflow: hidden; }
+
+/* Preloader Main Container */
+#preloader {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: clip-path 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Technical Grid Overlay */
+.hd-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(181, 131, 90, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(181, 131, 90, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+/* SVG Orbital Hub */
+.hub-wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orbital-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.ring {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 0.5;
+    transform-origin: center;
+}
+
+.ring-outer { stroke-opacity: 0.2; animation: pulseCore 3s infinite; }
+.ring-middle { stroke-opacity: 0.5; animation: spinCW 10s linear infinite; }
+.ring-inner { stroke-width: 2; stroke-opacity: 0.8; stroke-dasharray: 5 5; animation: spinCCW 5s linear infinite; }
+
+.scan-line {
+    stroke: #fff;
+    stroke-width: 1;
+    stroke-linecap: round;
+    transform-origin: 100px 100px;
+    animation: spinCW 2s linear infinite;
+    opacity: 0.4;
+}
+
+/* Branding & Text */
+.core-text {
+    text-align: center;
+    z-index: 5;
+}
+
+.brand-title {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #fff;
+    font-size: 2.2rem;
+    letter-spacing: 18px;
+    margin: 0;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.brand-title span { font-weight: 700; color: var(--accent); }
+
+.binary-stream {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    margin-top: 15px;
+    letter-spacing: 4px;
+    opacity: 0.6;
+}
+
+/* HUD Element Styling */
+.hud-corners {
+    position: absolute;
+    inset: 40px;
+    pointer-events: none;
+    font-family: 'JetBrains Mono', monospace;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.corner { position: absolute; }
+.top-l { top: 0; left: 0; border-left: 1px solid var(--accent); padding-left: 10px; }
+.top-r { top: 0; right: 0; text-align: right; border-right: 1px solid var(--accent); padding-right: 10px; }
+.bot-l { bottom: 0; left: 0; }
+.bot-r { bottom: 0; right: 0; }
+
+/* Animations */
+@keyframes spinCW { to { transform: rotate(360deg); } }
+@keyframes spinCCW { to { transform: rotate(-360deg); } }
+@keyframes pulseCore { 0%, 100% { transform: scale(1); opacity: 0.2; } 50% { transform: scale(1.1); opacity: 0.5; } }
+
+/* Exit Transition */
+.preloader-hidden {
+    clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+    pointer-events: none;
+}
+</style>
+
+<script>
+    window.addEventListener('load', () => {
+        const coord = document.getElementById('coord');
+        const binary = document.getElementById('binary');
+        
+        // Dynamic Technical Simulation
+        const updateHUD = () => {
+            // Generate random coordinates
+            const x = (Math.random() * 100).toFixed(2);
+            const y = (Math.random() * 100).toFixed(2);
+            coord.innerText = `X: ${x} Y: ${y}`;
+            
+            // Generate random binary bits
+            let bits = "";
+            for(let i=0; i<12; i++) bits += Math.round(Math.random());
+            binary.innerText = bits;
+        };
+
+        const hudInterval = setInterval(updateHUD, 100);
+
+        setTimeout(() => {
+            clearInterval(hudInterval);
+            document.getElementById('preloader').classList.add('preloader-hidden');
+            document.body.style.overflow = 'visible';
+        }, 3800);
+    });
+</script>
+
+</body>
+</html>
