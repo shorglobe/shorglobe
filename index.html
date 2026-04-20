@@ -3,186 +3,971 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shor Globe | Technical HD</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=JetBrains+Mono:wght@100&display=swap" rel="stylesheet">
+    <title>Aalam | Modern Preloader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div id="preloader">
-    <div class="hd-grid"></div>
-
-    <div class="hub-wrapper">
-        <svg class="orbital-svg" viewBox="0 0 200 200">
-            <circle class="ring ring-outer" cx="100" cy="100" r="90" />
-            <circle class="ring ring-middle" cx="100" cy="100" r="70" stroke-dasharray="10 20" />
-            <circle class="ring ring-inner" cx="100" cy="100" r="45" />
-            <line class="scan-line" x1="100" y1="100" x2="100" y2="10" />
-        </svg>
-        
-        <div class="core-text">
-            <h1 class="brand-title">SHOR<span>GLOBE</span></h1>
-            <div class="binary-stream" id="binary">011001 101100</div>
-        </div>
-    </div>
-
-    <div class="hud-corners">
-        <div class="corner top-l">STATUS: ENCRYPTING</div>
-        <div class="corner top-r" id="coord">X: 0.00 Y: 0.00</div>
-        <div class="corner bot-l">S.G. NODE: 04-B</div>
-        <div class="corner bot-r">HD_BOOT_MODE: TRUE</div>
+    <div class="loader-wrapper">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <h1 class="loader-logo">SHOR GLOBE</h1>
     </div>
 </div>
 
+<nav class="ai-navbar">
+  <div class="nav-wrapper">
+    <div class="brand">
+      <div class="ai-node"></div>
+      SHOR<span>GLOBE</span>
+    </div>
+
+    <ul class="nav-menu">
+      <li><a href="#services">Solutions</a></li>
+      <li><a href="#automation">Automation</a></li>
+      <li><a href="#ai">AI Tools</a></li>
+      <li><a href="#connect" class="shimmer-btn">Let's Connect</a></li>
+    </ul>
+
+    <div class="sidebar-trigger" id="sidebarBtn">
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="ai-sidebar" id="aiSidebar">
+  <div class="sidebar-close" id="closeBtn">&times;</div>
+  <nav class="sidebar-content">
+    <a href="#services">Digital Marketing</a>
+    <a href="#automation">Business Automation</a>
+    <a href="#ai">AI Integration</a>
+    <a href="#connect" class="mobile-connect">Let's Connect</a>
+  </nav>
+</div>
+<div class="blur-overlay" id="overlay"></div>
+
+
+
+<section class="hero">
+  <div class="hero-container">
+    <div class="badge">
+      <span class="pulsing-dot"></span>
+      Next-Gen Business Automation
+    </div>
+    
+    <h1 class="hero-title">
+      YOUR ONE STOP <br>
+      <span class="gradient-text">DIGITAL SERVICE SOLUTION</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Elevate your business with AI-driven marketing, seamless automation, 
+      and cutting-edge digital strategies tailored for the global market.
+    </p>
+    
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Explore Solutions</a>
+      <a href="#connect" class="btn-secondary">Let's Connect</a>
+    </div>
+  </div>
+  
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+</section>
+
+<section class="services-matrix" id="services">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">SHOR GLOBE <span class="gradient-text">Ecosystem</span></h2>
+      <p>A comprehensive 9-point digital infrastructure for modern needs.</p>
+    </div>
+
+    <div class="matrix-grid">
+      <div class="m-card">
+        <span class="m-number">01</span>
+        <div class="m-icon">🎯</div>
+        <h3>Digital Marketing</h3>
+        <p>Strategic growth and AI-driven ad campaigns.</p>
+      </div>
+
+      <div class="m-card">
+        <span class="m-number">02</span>
+        <div class="m-icon">📅</div>
+        <h3>Digital Booking</h3>
+        <p>Seamless appointment and reservation systems.</p>
+      </div>
+
+      <div class="m-card">
+        <span class="m-number">03</span>
+        <div class="m-icon">🏛️</div>
+        <h3>Gov Services</h3>
+        <p>Streamlined access to essential digital government portals.</p>
+      </div>
+
+      <div class="m-card">
+        <span class="m-number">04</span>
+        <div class="m-icon">🎓</div>
+        <h3>Education</h3>
+        <p>E-learning modules and digital academic solutions.</p>
+      </div>
+
+      <div class="m-card">
+        <span class="m-number">05</span>
+        <div class="m-icon">✈️</div>
+        <h3>Tour & Travel</h3>
+        <p>Global logistics and digital travel planning.</p>
+      </div>
+
+      <div class="m-card">
+        <span class="m-number">06</span>
+        <div class="m-icon">⚙️</div>
+        <h3>Other Services</h3>
+        <p>Custom digital solutions tailored to your needs.</p>
+      </div>
+
+      <div class="m-card rent-card">
+        <span class="m-tag">PROMOTED</span>
+        <div class="m-icon">🏢</div>
+        <h3>Mall Space Rent</h3>
+        <p>Premium digital placement for retail visibility.</p>
+      </div>
+
+      <div class="m-card rent-card">
+        <span class="m-tag">PROMOTED</span>
+        <div class="m-icon">🏬</div>
+        <h3>Partner Spotlights</h3>
+        <p>Paid promotion slots for high-traffic engagement.</p>
+      </div>
+
+      <div class="m-card rent-card">
+        <span class="m-tag">PROMOTED</span>
+        <div class="m-icon">💎</div>
+        <h3>Elite Placement</h3>
+        <p>Exclusive digital real estate for luxury brands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="connect-section" id="connect">
+  <div class="connect-container">
+    
+    <div class="contact-box">
+      <div class="badge">Inquiry Portal</div>
+      <h2 class="title">Ready to <span class="gradient-text">Scale?</span></h2>
+      <p class="subtitle">Select your service and our AI-specialist will reach out within 24 hours.</p>
+      
+      <form class="ai-form">
+        <div class="input-group">
+          <input type="text" placeholder="Full Name" required>
+        </div>
+        <div class="input-group">
+          <input type="email" placeholder="Email Address" required>
+        </div>
+        <div class="input-group">
+          <select required>
+            <option value="" disabled selected>Select Service</option>
+            <option>Digital Marketing</option>
+            <option>Booking Systems</option>
+            <option>Gov Services</option>
+            <option>Mall Space Rent</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <textarea placeholder="Tell us about your project..." rows="4"></textarea>
+        </div>
+        <button type="submit" class="shimmer-btn">Submit Inquiry</button>
+      </form>
+    </div>
+
+    <div class="faq-box">
+      <h3 class="faq-title">Frequently Asked</h3>
+      
+      <div class="faq-item">
+        <h4>How does the Mall Rent work?</h4>
+        <p>We provide high-traffic digital placements and physical ad slots within our partner malls for maximum brand visibility.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Are Gov Services secure?</h4>
+        <p>Absolutely. We act as a secure digital bridge, ensuring all data handled via SHOR GLOBE follows strict encryption protocols.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Can I bundle services?</h4>
+        <p>Yes. Our "One-Stop" solution allows you to combine marketing, booking, and automation into a single custom package.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<footer class="ai-footer">
+  <div class="footer-container">
+    
+    <div class="footer-col">
+      <div class="logo">SHOR<span>GLOBE</span></div>
+      <p class="footer-desc">
+        Your premier destination for AI-driven business automation, 
+        digital marketing, and innovative mall space solutions.
+      </p>
+      <div class="social-links">
+        <a href="#" class="social-icon">Fb</a>
+        <a href="#" class="social-icon">Li</a>
+        <a href="#" class="social-icon">X</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="#">Digital Marketing</a></li>
+        <li><a href="#">Gov Services</a></li>
+        <li><a href="#">Mall Rent</a></li>
+        <li><a href="#">Education</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Let's Connect</h4>
+      <p>Questions? Chat with us now:</p>
+      <a href="https://wa.me/1234567890" class="whatsapp-link" target="_blank">
+        <span class="wa-icon">💬</span> WhatsApp Support
+      </a>
+      <p class="email-text">support@shorglobe.com</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 SHOR GLOBE. All Rights Reserved.</p>
+    <div class="legal-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+<script async src="https://cse.google.com/cse.js?cx=YOUR_SEARCH_ENGINE_ID"></script>
+<div class="gcse-search"></div>
 <style>
-:root {
-    --accent: #b5835a;
-    --bg: #030303;
-}
+/* Reset & Body */
+body { margin: 0; padding: 0; background: #fdfdfd; }
 
-body { margin: 0; background: var(--bg); overflow: hidden; }
-
-/* Preloader Main Container */
+/* Preloader Container */
 #preloader {
     position: fixed;
-    inset: 0;
-    background: var(--bg);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0f0f0f; /* Deep dark background */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10000;
-    transition: clip-path 1.2s cubic-bezier(0.7, 0, 0.3, 1);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
 }
 
-/* Technical Grid Overlay */
-.hd-grid {
-    position: absolute;
-    inset: 0;
-    background-image: 
-        linear-gradient(rgba(181, 131, 90, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(181, 131, 90, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    opacity: 0.5;
-}
-
-/* SVG Orbital Hub */
-.hub-wrapper {
+.loader-wrapper {
     position: relative;
-    width: 400px;
-    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.orbital-svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
+/* The Animated Rings */
 .ring {
-    fill: none;
-    stroke: var(--accent);
-    stroke-width: 0.5;
-    transform-origin: center;
-}
-
-.ring-outer { stroke-opacity: 0.2; animation: pulseCore 3s infinite; }
-.ring-middle { stroke-opacity: 0.5; animation: spinCW 10s linear infinite; }
-.ring-inner { stroke-width: 2; stroke-opacity: 0.8; stroke-dasharray: 5 5; animation: spinCCW 5s linear infinite; }
-
-.scan-line {
-    stroke: #fff;
-    stroke-width: 1;
-    stroke-linecap: round;
-    transform-origin: 100px 100px;
-    animation: spinCW 2s linear infinite;
-    opacity: 0.4;
-}
-
-/* Branding & Text */
-.core-text {
-    text-align: center;
-    z-index: 5;
-}
-
-.brand-title {
-    font-family: 'Space Grotesk', sans-serif;
-    color: #fff;
-    font-size: 2.2rem;
-    letter-spacing: 18px;
-    margin: 0;
-    font-weight: 300;
-    text-transform: uppercase;
-}
-
-.brand-title span { font-weight: 700; color: var(--accent); }
-
-.binary-stream {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--accent);
-    margin-top: 15px;
-    letter-spacing: 4px;
-    opacity: 0.6;
-}
-
-/* HUD Element Styling */
-.hud-corners {
+    width: 180px;
+    height: 180px;
+    border: 1px solid transparent;
+    border-radius: 50%;
     position: absolute;
-    inset: 40px;
-    pointer-events: none;
-    font-family: 'JetBrains Mono', monospace;
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 9px;
-    letter-spacing: 2px;
 }
 
-.corner { position: absolute; }
-.top-l { top: 0; left: 0; border-left: 1px solid var(--accent); padding-left: 10px; }
-.top-r { top: 0; right: 0; text-align: right; border-right: 1px solid var(--accent); padding-right: 10px; }
-.bot-l { bottom: 0; left: 0; }
-.bot-r { bottom: 0; right: 0; }
+.ring:nth-child(1) {
+    border-bottom: 2px solid #b5835a;
+    animation: rotate1 2s linear infinite;
+}
+
+.ring:nth-child(2) {
+    border-right: 2px solid #fff;
+    animation: rotate2 2s linear infinite;
+}
+
+.ring:nth-child(3) {
+    border-top: 2px solid #444;
+    animation: rotate3 2s linear infinite;
+}
+
+/* Logo Styling */
+.loader-logo {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 24px;
+    letter-spacing: 8px;
+    z-index: 1;
+    animation: pulse 2s ease-in-out infinite;
+}
 
 /* Animations */
-@keyframes spinCW { to { transform: rotate(360deg); } }
-@keyframes spinCCW { to { transform: rotate(-360deg); } }
-@keyframes pulseCore { 0%, 100% { transform: scale(1); opacity: 0.2; } 50% { transform: scale(1.1); opacity: 0.5; } }
+@keyframes rotate1 {
+    from { transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg); }
+    to { transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg); }
+}
 
-/* Exit Transition */
+@keyframes rotate2 {
+    from { transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg); }
+    to { transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg); }
+}
+
+@keyframes rotate3 {
+    from { transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg); }
+    to { transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+/* Exit Animation */
 .preloader-hidden {
-    clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
-    pointer-events: none;
+    transform: translateY(-100%) !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap');
+
+:root {
+  --bg-color: #030712;
+  --ai-cyan: #22d3ee;
+  --ai-purple: #818cf8;
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Outfit', sans-serif;
+  margin: 0;
+}
+
+.ai-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background: rgba(3, 7, 18, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+.nav-wrapper {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.brand span { color: var(--ai-cyan); }
+
+.ai-node {
+  width: 12px;
+  height: 12px;
+  background: var(--ai-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--ai-cyan);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  align-items: center;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #9ca3af;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-menu a:hover { color: #fff; }
+
+/* Let's Connect Shimmer Button */
+.shimmer-btn {
+  background: linear-gradient(90deg, #1e1e1e, #333, #1e1e1e);
+  background-size: 200% auto;
+  color: #fff !important;
+  padding: 12px 28px;
+  border-radius: 8px;
+  border: 1px solid var(--ai-purple);
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+/* Sidebar Trigger */
+.sidebar-trigger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-trigger span {
+  width: 28px;
+  height: 2px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+/* Sidebar Styling (Top-Right Slide) */
+.ai-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 350px;
+  height: 100%;
+  background: #080b14;
+  border-left: 1px solid var(--ai-cyan);
+  z-index: 2000;
+  transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 80px 40px;
+}
+
+.ai-sidebar.active { right: 0; }
+
+.sidebar-content a {
+  display: block;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 300;
+  text-decoration: none;
+  margin-bottom: 30px;
+  transition: 0.3s;
+}
+
+.sidebar-content a:hover { color: var(--ai-cyan); padding-left: 15px; }
+
+.blur-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 1500;
+}
+
+.blur-overlay.visible { opacity: 1; visibility: visible; }
+
+.sidebar-close {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .nav-menu { display: none; }
+}
+
+
+:root {
+  --primary-accent: #22d3ee; /* Cyan */
+  --secondary-accent: #818cf8; /* Indigo */
+  --text-dim: #9ca3af;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+/* Background Effects */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  z-index: -1;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  z-index: -1;
+}
+
+/* Content Styling */
+.hero-container {
+  max-width: 900px;
+  z-index: 10;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 100px;
+  color: var(--primary-accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.pulsing-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary-accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.hero-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: #fff;
+  color: #000;
+  padding: 16px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #fff;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(34, 211, 238, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
+}
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 2.2rem; }
+  .hero-actions { flex-direction: column; }
+}
+
+.services-matrix {
+  padding: 80px 5%;
+  background: #020617;
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Perfect 3x3 Grid */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.m-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 16px;
+  position: relative;
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.m-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary-accent); /* Cyan from previous step */
+  transform: translateY(-5px);
+}
+
+.m-number {
+  font-size: 0.8rem;
+  color: var(--primary-accent);
+  font-weight: 800;
+  opacity: 0.5;
+  margin-bottom: 15px;
+}
+
+.m-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.m-card h3 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.m-card p {
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Specific Style for Rent/Paid Sections */
+.rent-card {
+  border: 1px solid rgba(251, 191, 36, 0.2); /* Amber Border */
+  background: linear-gradient(145deg, rgba(251, 191, 36, 0.03), transparent);
+}
+
+.rent-card:hover {
+  border-color: #fbbf24;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.1);
+}
+
+.m-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 0.6rem;
+  background: #fbbf24;
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 800;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+  .matrix-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .matrix-grid { grid-template-columns: 1fr; }
+}
+.connect-section {
+  padding: 100px 5%;
+  background: #020617;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.connect-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+}
+
+.contact-box .title {
+  font-size: 3rem;
+  color: #fff;
+  margin: 20px 0;
+}
+
+.ai-form {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group input, 
+.input-group select, 
+.input-group textarea {
+  width: 100%;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #fff;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  border-color: var(--ai-cyan);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* FAQ Styling */
+.faq-box {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.faq-title {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.faq-item {
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.faq-item h4 {
+  color: var(--ai-cyan);
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.faq-item p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+  .connect-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
+
+.ai-footer {
+  background: #010409;
+  padding: 80px 5% 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 60px;
+}
+
+.footer-col h4 {
+  color: #fff;
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+}
+
+.footer-desc {
+  line-height: 1.6;
+  margin: 20px 0;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+}
+
+.footer-col ul a:hover {
+  color: var(--ai-cyan);
+}
+
+/* WhatsApp Button Styling */
+.whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid var(--ai-cyan);
+  color: var(--ai-cyan);
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 15px 0;
+  transition: 0.3s;
+}
+
+.whatsapp-link:hover {
+  background: var(--ai-cyan);
+  color: #000;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.email-text {
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 60px auto 0;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.legal-links a {
+  color: inherit;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
+/* Animated AI Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(34, 211, 238, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(129, 140, 248, 0.05) 0%, transparent 40%);
+  z-index: -2;
+}
+
+/* Subtle Floating Animation for the Hero and Cards */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.ai-node, .m-icon {
+  animation: float 4s ease-in-out infinite;
 }
 </style>
 
 <script>
     window.addEventListener('load', () => {
-        const coord = document.getElementById('coord');
-        const binary = document.getElementById('binary');
+        const preloader = document.getElementById('preloader');
         
-        // Dynamic Technical Simulation
-        const updateHUD = () => {
-            // Generate random coordinates
-            const x = (Math.random() * 100).toFixed(2);
-            const y = (Math.random() * 100).toFixed(2);
-            coord.innerText = `X: ${x} Y: ${y}`;
-            
-            // Generate random binary bits
-            let bits = "";
-            for(let i=0; i<12; i++) bits += Math.round(Math.random());
-            binary.innerText = bits;
-        };
-
-        const hudInterval = setInterval(updateHUD, 100);
-
+        // Slightly longer delay to allow the animation to feel "intentional"
         setTimeout(() => {
-            clearInterval(hudInterval);
-            document.getElementById('preloader').classList.add('preloader-hidden');
-            document.body.style.overflow = 'visible';
-        }, 3800);
+            preloader.classList.add('preloader-hidden');
+        }, 2000);
     });
+
+    const sidebar = document.getElementById('aiSidebar');
+const overlay = document.getElementById('overlay');
+const trigger = document.getElementById('sidebarBtn');
+const closeBtn = document.getElementById('closeBtn');
+
+function toggleSidebar() {
+  sidebar.classList.toggle('active');
+  overlay.classList.toggle('visible');
+}
+
+trigger.addEventListener('click', toggleSidebar);
+closeBtn.addEventListener('click', toggleSidebar);
+overlay.addEventListener('click', toggleSidebar);
+
+// Close sidebar on link click
+document.querySelectorAll('.sidebar-content a').forEach(link => {
+  link.addEventListener('click', toggleSidebar);
+});
+
+
 </script>
 
 </body>
