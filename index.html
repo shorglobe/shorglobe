@@ -659,16 +659,40 @@ header,
     padding-top: 20px !important;
     margin-top: 0 !important;
 }
+/* About Section CSS Styling */
+.about-section {
+    background-color: #061525;
+    color: #333;
+}
+
+.about-section .section-title {
+    color: #111;
+    letter-spacing: -0.5px;
+}
+
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-color: S#4e5358 !important;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.08) !important;
+}
+
+.stat-box {
+    min-width: 130px;
+}
     </style>
 </head>
 <body>
 
     <!-- Top Menu Bar with Clickable Toggle -->
-    <div class="top-menu-bar">
+    <!--<div class="top-menu-bar">
         <div class="top-menu-toggle" data-bs-toggle="offcanvas" data-bs-target="#topMenuDrawer">
             <i class="fa-solid fa-bars"></i> TOP MENU
         </div>
-    </div>
+    </div>-->
 
     <!-- Offcanvas White Drawer (Opens when Top Menu is clicked) -->
     <div class="offcanvas offcanvas-end offcanvas-custom" tabindex="-1" id="topMenuDrawer">
@@ -712,9 +736,11 @@ header,
     <nav class="navbar navbar-custom navbar-dark navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand fw-bold fs-4 text-white" href="#">shorglobe</a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+             <div class="top-menu-bar">
+        <div class="top-menu-toggle" data-bs-toggle="offcanvas" data-bs-target="#topMenuDrawer">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mt-3 mt-lg-0">
                     <li class="nav-item"><a class="nav-link active" href="#">HOME</a></li>
@@ -733,7 +759,9 @@ header,
             <br>
             <img src="shorglobe.png" alt="" width="100px" style="padding-bottom: 30px;">
             <h1>SHOR GLOBE</h1>
-            <span>We help you manage conscious online services, government documentation, travel assistance, and enterprise software solutions seamlessly under one professional roof.</span>
+            <span>We Help You Manage Conscious Online Services, Government Documentation, Travel Assistance, And Enterprise Software Solutions. </span>
+            <br>
+            <br>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
                 <a href="#services" class="btn btn-custom-primary">OUR SERVICES</a>
                 <a href="#contact" class="btn btn-custom-primary" style="background: transparent; border: 1px solid rgba(255,255,255,0.3);">CONTACT US</a>
@@ -742,47 +770,75 @@ header,
                 <a href="#about" class="btn-play"><i class="fa-solid fa-play"></i></a>
             </div>-->
         </div>
+        <br>
     </header>
 
-    <!-- About Section (Redesigned) -->
-<section id="about" class="py-5 border-top border-secondary border-opacity-10" style="background-color: #060913;">
+    <!-- About Section HTML -->
+<section id="about" class="about-section py-5">
     <div class="container">
         <div class="row align-items-center">
+            <!-- Left Column: Intro & Mission -->
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <h3 class="section-title" style="text-align: center;">Empowering Digitally & Technically</h3>
-                <p class="about-quote-text mb-4">
-                    "We are committed to helping individuals and businesses unlock peace of mind and operational efficiency through smart workflows and robust IT solutions."
+                <h2 class="section-title fw-bold mb-3"></h2>
+                <p class="text-muted lead mb-4">
+                   
                 </p>
-                
-                <!-- Modern Styled Points -->
-                <div class="d-flex flex-column gap-3">
-                    <div class="about-feature-item">
-                        <div class="about-icon-box">
-                            <i class="fa-solid fa-clock"></i>
-                        </div>
-                        <div>
-                            <h5 class="text-white fw-bold mb-1">Save Time</h5>
-                            <p class="text-secondary small mb-0">We handle the complexity, so you don't have to.</p>
+                <h6 class="text-secondary mb-4">
+                    
+                </h6>
+                <div class="d-flex gap-3">
+                    <div class="stat-box p-3 border rounded bg-light">
+                        <h3 class="h4 fw-bold text-primary mb-1">100%</h3>
+                        <p class="small text-muted mb-0">Reliable Support</p>
+                    </div>
+                    <div class="stat-box p-3 border rounded bg-light">
+                        <h3 class="h4 fw-bold text-primary mb-1">Fast</h3>
+                        <p class="small text-muted mb-0">Execution & Delivery</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Several Key Items / Core Pillars -->
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <!-- Item 1 -->
+                    <div class="col-md-6">
+                        <div class="p-4 border rounded shadow-sm h-100 bg-white feature-card">
+                            <div class="icon-wrapper mb-3 text-primary fs-3">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Govt. Documentation</h5>
+                            <p class="text-muted small mb-0">Hassle-free processing and expert handling of official paperwork and filings.</p>
                         </div>
                     </div>
-
-                    <div class="about-feature-item">
-                        <div class="about-icon-box">
-                            <i class="fa-solid fa-wallet"></i>
-                        </div>
-                        <div>
-                            <h5 class="text-white fw-bold mb-1">Save Money</h5>
-                            <p class="text-secondary small mb-0">We optimize your digital and operational expenses.</p>
+                    <!-- Item 2 -->
+                    <div class="col-md-6">
+                        <div class="p-4 border rounded shadow-sm h-100 bg-white feature-card">
+                            <div class="icon-wrapper mb-3 text-primary fs-3">
+                                <i class="bi bi-airplane"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Travel Assistance</h5>
+                            <p class="text-muted small mb-0">Comprehensive planning, ticketing support, and journey management.</p>
                         </div>
                     </div>
-
-                    <div class="about-feature-item">
-                        <div class="about-icon-box">
-                            <i class="fa-solid fa-chart-line"></i>
+                    <!-- Item 3 -->
+                    <div class="col-md-6">
+                        <div class="p-4 border rounded shadow-sm h-100 bg-white feature-card">
+                            <div class="icon-wrapper mb-3 text-primary fs-3">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Conscious Online Services</h5>
+                            <p class="text-muted small mb-0">Mindful, secure, and client-centric digital management tailored to your needs.</p>
                         </div>
-                        <div>
-                            <h5 class="text-white fw-bold mb-1">Continuous Growth</h5>
-                            <p class="text-secondary small mb-0">We guide you toward sustainable digital expansion.</p>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="col-md-6">
+                        <div class="p-4 border rounded shadow-sm h-100 bg-white feature-card">
+                            <div class="icon-wrapper mb-3 text-primary fs-3">
+                                <i class="bi bi-code-slash"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Enterprise Software</h5>
+                            <p class="text-muted small mb-0">Custom software solutions and web automation designed to scale your operations.</p>
                         </div>
                     </div>
                 </div>
@@ -791,7 +847,6 @@ header,
     </div>
 </section>
 
-<section>
         <!-- Added "Our Services" Button/Badge on Top -->
         <div class="mb-3" style="text-align: center; padding-top: 30px;">
             <a href="#services" class="hub-services-btn">
@@ -915,6 +970,8 @@ header,
         </div>
     </section>
 
+<section>
+
     <!-- FAQ Section -->
 <section class="py-5" style="background-color: #0b1120;">
     <div class="container">
@@ -983,58 +1040,6 @@ header,
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <section>
-        <!-- Features Grid Section -->
-<section class="py-5" style="background-color: #060913;">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-box p-4 rounded-4 h-100 border border-secondary border-opacity-10">
-                    <div class="feature-icon mb-3 text-primary fs-3">
-                        <i class="fa-solid fa-bolt"></i>
-                    </div>
-                    <h5 class="text-white fw-bold mb-2">Fast Processing</h5>
-                    <p class="text-secondary small mb-0">We handle your documents and requests with maximum speed and zero delays.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-box p-4 rounded-4 h-100 border border-secondary border-opacity-10">
-                    <div class="feature-icon mb-3 text-primary fs-3">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h5 class="text-white fw-bold mb-2">100% Secure & Trusted</h5>
-                    <p class="text-secondary small mb-0">Your personal data and documentation are handled with strict privacy protocols.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-box p-4 rounded-4 h-100 border border-secondary border-opacity-10">
-                    <div class="feature-icon mb-3 text-primary fs-3">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <h5 class="text-white fw-bold mb-2">Dedicated Support</h5>
-                    <p class="text-secondary small mb-0">Get direct expert assistance via WhatsApp or phone whenever you need help.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    </section>
-                
-    <!-- About Us Section -->
-<section class="about-section py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="about-quote p-3 rounded-2">
-                    <p class="mb-0 text-white fw-medium small">
-                        "Your vision is our blueprint. We manage the digital weight so you can focus entirely on moving forward."
-                    </p>
                 </div>
             </div>
         </div>
@@ -1120,7 +1125,7 @@ header,
             <div class="col-md-4">
                     <div class="team-card">
                         <div class="team-img-container">
-                            <img src="ai-generated-illustration-of-the-character-of-a-muslim-student-free-photo.jpg" alt="" width="100%" style="padding-top: 50px;">
+                            <img src="ai-generated-illustration-of-the-character-of-a-muslim-student-free-photo.jpg" alt="" width="367px" style="padding-top: 70px;">
                         </div>
                         <div class="team-info-badge">
                             <div>
@@ -1134,6 +1139,10 @@ header,
             </div>
         </div>
     </section>
+
+    <p class="about-quote-text mb-4">
+                    "We are committed to helping individuals and businesses unlock peace of mind and operational efficiency through smart workflows and robust IT solutions."
+                </p>
 
     <!-- Footer -->
     <footer id="contact">
