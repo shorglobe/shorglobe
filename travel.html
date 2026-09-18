@@ -144,6 +144,94 @@
             background: #00c853;
         }
 
+        /* Modal Popup Styling */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: #0b131b;
+            border: 1px solid #00e676;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 450px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 230, 118, 0.2);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+        .modal-header h3 {
+            color: #00e676;
+            font-size: 18px;
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            background: #101a23;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #00e676;
+            outline: none;
+        }
+        .submit-whatsapp-btn {
+            width: 100%;
+            background: #00e676;
+            color: #070d12;
+            border: none;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+        .submit-whatsapp-btn:hover {
+            background: #00c853;
+        }
+
         /* Social Media Section */
         .social-section {
             text-align: center;
@@ -189,12 +277,6 @@
             padding: 20px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        .video-container h3 {
-            font-size: 16px;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 15px;
         }
         .video-wrapper {
             position: relative;
@@ -303,7 +385,8 @@
                 <div class="service-icon"><i class="fa-solid fa-plane"></i></div>
                 <div class="service-title">Flight Ticket Booking</div>
             </div>
-            <a href="https://wa.me/9400421150?text=Hi,%20I%20need%20assistance%20with%20Cab%20Booking" class="action-btn">Book <i class="fa-solid fa-arrow-right"></i></a></div>
+            <button class="action-btn" onclick="openModal('Flight Ticket Booking')">Book <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
 
         <!-- 2. Visa Assistance -->
         <div class="service-card">
@@ -311,7 +394,7 @@
                 <div class="service-icon"><i class="fa-solid fa-passport"></i></div>
                 <div class="service-title">Visa Assistance</div>
             </div>
-            <a href="https://wa.me/9400421150?text=Hi,%20I%20need%20assistance%20with%20Visa%20Assistance" class="action-btn">Apply <i class="fa-solid fa-arrow-right"></i></a>
+            <button class="action-btn" onclick="openModal('Visa Assistance')">Apply <i class="fa-solid fa-arrow-right"></i></button>
         </div>
 
         <!-- 3. Hotel Booking -->
@@ -320,7 +403,7 @@
                 <div class="service-icon"><i class="fa-solid fa-hotel"></i></div>
                 <div class="service-title">Hotel Booking</div>
             </div>
-            <a href="https://wa.me/9400421150?text=Hi,%20I%20need%20assistance%20with%20Hotel%20Booking" class="action-btn">Book <i class="fa-solid fa-arrow-right"></i></a>
+            <button class="action-btn" onclick="openModal('Hotel Booking')">Book <i class="fa-solid fa-arrow-right"></i></button>
         </div>
 
         <!-- 4. Train Ticket -->
@@ -329,7 +412,7 @@
                 <div class="service-icon"><i class="fa-solid fa-train"></i></div>
                 <div class="service-title">Train Ticket Booking</div>
             </div>
-            <a href="https://wa.me/9400421150?text=Hi,%20I%20need%20assistance%20with%20Train%20Ticket%20Booking" class="action-btn">Book <i class="fa-solid fa-arrow-right"></i></a>
+            <button class="action-btn" onclick="openModal('Train Ticket Booking')">Book <i class="fa-solid fa-arrow-right"></i></button>
         </div>
 
         <!-- 5. Bus Ticket -->
@@ -338,7 +421,7 @@
                 <div class="service-icon"><i class="fa-solid fa-bus"></i></div>
                 <div class="service-title">Bus Ticket Booking</div>
             </div>
-            <a href="https://wa.me/9400421150?text=Hi,%20I%20need%20assistance%20with%20Bus%20Ticket%20Booking" class="action-btn">Book <i class="fa-solid fa-arrow-right"></i></a>
+            <button class="action-btn" onclick="openModal('Bus Ticket Booking')">Book <i class="fa-solid fa-arrow-right"></i></button>
         </div>
 
         <!-- 6. Cab / Uber Booking -->
@@ -347,7 +430,7 @@
                 <div class="service-icon"><i class="fa-solid fa-taxi"></i></div>
                 <div class="service-title">Cab / Uber Booking</div>
             </div>
-            <a href="https://wa.me/9400421150?text=Hi,%20I%20need%20assistance%20with%20Cab%20/%20Uber%20Booking" class="action-btn">Book <i class="fa-solid fa-arrow-right"></i></a>
+            <button class="action-btn" onclick="openModal('Cab / Uber Booking')">Book <i class="fa-solid fa-arrow-right"></i></button>
         </div>
 
         <!-- 7. Travel & Vehicle Insurance -->
@@ -356,7 +439,7 @@
                 <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
                 <div class="service-title">Travel & Vehicle Insurance</div>
             </div>
-            <a href="https://wa.me/9400421150?text=Hi,%20I%20need%20assistance%20with%20Travel%20and%20Vehicle%20Insurance" class="action-btn">Enquire <i class="fa-solid fa-arrow-right"></i></a>
+            <button class="action-btn" onclick="openModal('Travel & Vehicle Insurance')">Enquire <i class="fa-solid fa-arrow-right"></i></button>
         </div>
 
         <!-- 8. Toll / FASTag Recharge -->
@@ -365,7 +448,7 @@
                 <div class="service-icon"><i class="fa-solid fa-road"></i></div>
                 <div class="service-title">Toll / FASTag Recharge</div>
             </div>
-            <a href="https://wa.me/9400421150?text=Hi,%20I%20need%20assistance%20with%20Toll%20/%20FASTag%20Recharge" class="action-btn">Recharge <i class="fa-solid fa-arrow-right"></i></a>
+            <button class="action-btn" onclick="openModal('Toll / FASTag Recharge')">Recharge <i class="fa-solid fa-arrow-right"></i></button>
         </div>
 
         <!-- 9. Vehicle & RTO Services -->
@@ -374,24 +457,71 @@
                 <div class="service-icon"><i class="fa-solid fa-car"></i></div>
                 <div class="service-title">Vehicle & RTO Services</div>
             </div>
-            <a href="https://wa.me/9400421150?text=Hi,%20I%20need%20assistance%20with%20Vehicle%20and%20RTO%20Services" class="action-btn">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            <button class="action-btn" onclick="openModal('Vehicle & RTO Services')">Explore <i class="fa-solid fa-arrow-right"></i></button>
         </div>
 
     </div>
 
-    <!-- Video Section (Direct Travel & Adventure Video) -->
+    <!-- Booking Popup Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Book Service</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="bookingForm" onsubmit="sendToWhatsApp(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="custName" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Age *</label>
+                    <input type="number" id="custAge" required placeholder="Enter your age">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="custPhone" required placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label>Email (Optional)</label>
+                    <input type="email" id="custEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Address *</label>
+                    <textarea id="custAddress" rows="2" required placeholder="Enter your address"></textarea>
+                </div>
+                <div class="form-group" id="dynamicField1">
+                    <label>From / Boarding Station *</label>
+                    <input type="text" id="extraField1" required placeholder="e.g. Cochin / Station Name">
+                </div>
+                <div class="form-group" id="dynamicField2">
+                    <label>To / Destination *</label>
+                    <input type="text" id="extraField2" required placeholder="e.g. Dubai / Destination Station">
+                </div>
+                <div class="form-group">
+                    <label>Additional Notes / Requirements</label>
+                    <textarea id="custNotes" rows="2" placeholder="Any specific requests..."></textarea>
+                </div>
+                <button type="submit" class="submit-whatsapp-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Submit & Send to WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- Local Travel Video Section -->
     <div class="video-section">
+        <div class="video-container">
             <div class="video-wrapper">
                 <video autoplay muted loop playsinline controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                    <!-- ഇവിടെ നിങ്ങളുടെ ഡൗൺലോഡ് ചെയ്ത വീഡിയോയുടെ ഫയൽ നെയിം നൽകുക (ഉദാഹരണത്തിന്: travel-video.mp4) -->
                     <source src="Shorglobe.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
+        </div>
     </div>
 
-     <!-- Social Media Icons Section -->
+    <!-- Social Media Icons Section -->
     <div class="social-section">
         <div class="social-icons">
             <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
@@ -401,7 +531,6 @@
             <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
         </div>
     </div>
-
 
     <!-- Footer -->
     <footer>
@@ -418,6 +547,81 @@
             <div class="footer-bottom"><span>© 2026 ShorGlobe. All Rights Reserved.</span><span>Simple. Fast. Reliable.</span></div>
         </div>
     </footer>
+    <!-- JavaScript for Popup and WhatsApp Redirection -->
+    <script>
+        let selectedService = "";
 
+        function openModal(serviceName) {
+            selectedService = serviceName;
+            document.getElementById('modalTitle').innerText = "Book: " + serviceName;
+            
+            // Adjust labels based on service type
+            let label1 = document.querySelector('#dynamicField1 label');
+            let label2 = document.querySelector('#dynamicField2 label');
+            
+            if(serviceName.includes('Bus') || serviceName.includes('Train')) {
+                label1.innerText = "From Station / City *";
+                label2.innerText = "To Station / City *";
+            } else if(serviceName.includes('Flight')) {
+                label1.innerText = "Boarding Airport / City *";
+                label2.innerText = "Destination Airport *";
+            } else if(serviceName.includes('Hotel')) {
+                label1.innerText = "City / Location *";
+                label2.innerText = "Check-in & Check-out Date *";
+            } else if(serviceName.includes('Cab')) {
+                label1.innerText = "Pickup Location *";
+                label2.innerText = "Drop Location *";
+            } else {
+                label1.innerText = "From / Requirement Details *";
+                label2.innerText = "To / Destination Details *";
+            }
+
+            document.getElementById('bookingModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            let name = document.getElementById('custName').value;
+            let age = document.getElementById('custAge').value;
+            let phone = document.getElementById('custPhone').value;
+            let email = document.getElementById('custEmail').value || "Not Provided";
+            let address = document.getElementById('custAddress').value;
+            let field1 = document.getElementById('extraField1').value;
+            let field2 = document.getElementById('extraField2').value;
+            let notes = document.getElementById('custNotes').value || "None";
+
+            let whatsappNumber = "9400421150"; // Your correct WhatsApp number
+
+            let message = `*New Booking Request - ShorGlobe*%0A` +
+                          `-----------------------------------%0A` +
+                          `*Service:* ${selectedService}%0A` +
+                          `*Name:* ${name}%0A` +
+                          `*Age:* ${age}%0A` +
+                          `*Phone:* ${phone}%0A` +
+                          `*Email:* ${email}%0A` +
+                          `*Address:* ${address}%0A` +
+                          `*Details 1:* ${field1}%0A` +
+                          `*Details 2:* ${field2}%0A` +
+                          `*Notes:* ${notes}%0A` +
+                          `-----------------------------------`;
+
+            let whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+            closeModal();
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            let modal = document.getElementById('bookingModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
