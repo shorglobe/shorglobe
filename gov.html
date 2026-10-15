@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shorglobe - Modern Online Document Assistance</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            900: '#0f172a',
+                        },
+                        whatsapp: {
+                            500: '#25D366',
+                            600: '#128C7E',
+                            700: '#075E54'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .modal-blur {
+            backdrop-filter: blur(6px);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="text-slate-800 bg-slate-50 min-h-screen flex flex-col justify-between">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-brand-900 text-slate-200 text-xs sm:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <span class="bg-emerald-500 text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">100% Online</span>
+        <span>• Starting at just <strong class="text-amber-400">₹199/-</strong></span>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo / Name -->
+            <div class="flex items-center space-x-3">
+                <div class="w-11 h-11 bg-gradient-to-tr from-brand-600 to-blue-400 rounded-xl flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+                    <i class="fa-solid me-0.5 fa-passport text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-black text-brand-900 tracking-tight flex items-center gap-1.5">
+                        SHORGLOBE
+                        <span class="text-xs bg-brand-50 text-brand-600 font-semibold px-2 py-0.5 rounded border border-brand-100 hidden sm:inline-block">Services</span>
+                    </h1>
+                    <p class="text-xs text-slate-500 font-medium">Digital Document Facilitation Portal</p>
+                </div>
+            </div>
+
+            <!-- WhatsApp Number Banner & Quick Call -->
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex flex-col text-right">
+                    <span class="text-xs text-slate-400 uppercase font-semibold tracking-wider">Direct WhatsApp</span>
+                    <span id="display-phone-nav" class="text-sm font-bold text-slate-800">+91 94977 51150</span>
+                </div>
+                <button onclick="openSettingsModal()" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-brand-600 hover:border-brand-200 bg-slate-50 transition" title="Change WhatsApp Number">
+                    <i class="fa-solid fa-gear text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative bg-gradient-to-b from-white via-slate-50 to-slate-100 border-b border-slate-200 py-12 lg:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full mb-6 shadow-sm">
+                <i class="fa-solid fa-shield-halved text-emerald-600"></i> Purely Online Service • No Biometric Center Visit Required
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-900 tracking-tight leading-tight max-w-3xl mx-auto">
+                Document Corrections, Re-issue & Downloads
+            </h2>
+
+            <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Select your document service below, fill in your information, and send details directly via WhatsApp. Our specialists process your application error-free!
+            </p>
+
+            <!-- Search Bar -->
+            <div class="mt-8 max-w-lg mx-auto relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg"></i>
+                <input type="text" id="service-search" oninput="filterServices()" placeholder="Search service (e.g. Lost PAN, Aadhaar Address, Passport)..." 
+                       class="w-full pl-12 pr-4 py-3.5 bg-white border border-slate-300 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition text-sm sm:text-base">
+            </div>
+
+            <!-- Features Highlights -->
+            <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center space-x-3">
+                    <i class="fa-solid fa-bolt text-amber-500 text-xl"></i>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Fast Processing</h4>
+                        <p class="text-[11px] text-slate-500">Same-day filing</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center space-x-3">
+                    <i class="fa-solid fa-check-double text-emerald-500 text-xl"></i>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">100% Error-Free</h4>
+                        <p class="text-[11px] text-slate-500">Expert document review</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center space-x-3">
+                    <i class="fa-brands fa-whatsapp text-whatsapp-500 text-2xl"></i>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">WhatsApp Support</h4>
+                        <p class="text-[11px] text-slate-500">Direct status updates</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center space-x-3">
+                    <i class="fa-solid fa-indian-rupee-sign text-brand-500 text-xl"></i>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-900">Affordable Fee</h4>
+                        <p class="text-[11px] text-slate-500">Starts at ₹199/- only</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SERVICES GRID SECTION -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h3 class="text-2xl font-bold text-brand-900">Available Online Services</h3>
+                <p class="text-sm text-slate-500">Click on any document card to start your request</p>
+            </div>
+            <span class="text-xs font-semibold bg-brand-100 text-brand-600 px-3 py-1.5 rounded-full hidden sm:inline-block">
+                7 Core Portals Available
+            </span>
+        </div>
+
+        <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- CARDS GENERATED DYNAMICALLY BY JAVASCRIPT -->
+        </div>
+
+        <div id="no-services-found" class="hidden text-center py-12">
+            <i class="fa-solid fa-folder-open text-4xl text-slate-300 mb-3"></i>
+            <p class="text-slate-500 font-medium">No services match your search query.</p>
+            <button onclick="resetSearch()" class="mt-3 text-sm text-brand-600 font-semibold hover:underline">Reset search filter</button>
+        </div>
+    </main>
+
+    <!-- HOW IT WORKS & INFO -->
+    <section class="bg-slate-100 border-t border-slate-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-center text-xl font-bold text-brand-900 mb-8">How Shorglobe Assistance Works</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center relative">
+                    <div class="w-10 h-10 bg-brand-100 text-brand-600 font-bold rounded-full flex items-center justify-center mx-auto mb-4 text-lg">1</div>
+                    <h4 class="font-bold text-slate-900 mb-2">1. Choose Service & Fill Details</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Select your document type and fill out basic details required for processing on government portals.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center relative">
+                    <div class="w-10 h-10 bg-brand-100 text-brand-600 font-bold rounded-full flex items-center justify-center mx-auto mb-4 text-lg">2</div>
+                    <h4 class="font-bold text-slate-900 mb-2">2. Submit via WhatsApp</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Click submit to automatically launch WhatsApp with a formatted summary sent directly to our team.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center relative">
+                    <div class="w-10 h-10 bg-brand-100 text-brand-600 font-bold rounded-full flex items-center justify-center mx-auto mb-4 text-lg">3</div>
+                    <h4 class="font-bold text-slate-900 mb-2">3. Verification & Digital Delivery</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Our representative verifies your documents, processes the portal application, and delivers updates/downloads.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Shorglobe Disclaimer Container -->
+<div style="width: 90%; max-width: 750px; margin: 30px auto; background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 5px solid #2563eb; border-radius: 8px; padding: 24px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: left;">
+  
+  <!-- Title Box -->
+  <div style="display: flex; align-items: center; margin-bottom: 12px; text-align: left;">
+    <span style="font-size: 22px; margin-right: 10px;">⚠️</span>
+    <div style="color: #1e293b; font-size: 18px; font-weight: 700; text-align: left;">Disclaimer</div>
+  </div>
+  
+  <!-- Main Paragraph -->
+  <div style="color: #475569; font-size: 14px; line-height: 1.6; margin-bottom: 12px; text-align: left;">
+    <strong>Shorglobe</strong> is an independent online digital facilitation center. We are <strong>not</strong> an official government agency or an authorized Akshaya Centre.
+  </div>
+
+  <!-- Bullet Points List (using divs) -->
+  <div style="color: #475569; font-size: 13.5px; line-height: 1.6; padding-left: 10px; text-align: left;">
+    
+    <div style="margin-bottom: 8px; display: flex; text-align: left;">
+      <span style="margin-right: 8px; color: #2563eb;">•</span>
+      <div style="text-align: left;">We assist citizens in filing, reviewing, and submitting applications on official public government portals (such as UIDAI, NSDL, Parivahan, NVSP, etc.).</div>
+    </div>
+    
+    <div style="margin-bottom: 8px; display: flex; text-align: left;">
+      <span style="margin-right: 8px; color: #2563eb;">•</span>
+      <div style="text-align: left;">Services requiring biometric capture (fingerprint, iris, or physical photograph updates) must be completed in person at an official government or Akshaya kiosk.</div>
+    </div>
+    
+    <div style="display: flex; text-align: left;">
+      <span style="margin-right: 8px; color: #2563eb;">•</span>
+      <div style="text-align: left;">Our fee is charged strictly for processing, document advisory, and administrative facilitation. Official government application fees are separate and payable directly as applicable.</div>
+    </div>
+
+  </div>
+
+</div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-900 text-slate-300 py-10 border-t border-slate-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-slate-800 pb-8">
+                <div>
+                    <span class="text-lg font-bold text-white tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-passport text-brand-500"></i> SHORGLOBE
+                    </span>
+                    <p class="text-xs text-slate-400 mt-1">Professional Facilitation & Online Digital Assistance</p>
+                </div>
+                <div class="flex items-center space-x-6 text-xs text-slate-400">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-400"></i> Verified Processing</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-lock text-brand-400"></i> Secure Data Handling</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock text-amber-400"></i> Rapid Turnaround</span>
+                </div>
+            </div>
+            <div class="mt-6 text-center md:text-left flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+                <p>&copy; <span id="current-year"></span> Shorglobe Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a id="floating-whatsapp-btn" href="#" target="_blank" 
+       class="fixed bottom-6 right-6 z-40 bg-whatsapp-500 hover:bg-whatsapp-600 text-white p-3.5 sm:p-4 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-105 group"
+       aria-label="Direct WhatsApp Contact">
+        <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
+        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out font-bold text-xs pl-0 group-hover:pl-2">Chat with Agent</span>
+    </a>
+
+    <!-- DYNAMIC SERVICE APPLICATION MODAL -->
+    <div id="service-modal" class="fixed inset-0 z-50 hidden overflow-y-auto modal-blur bg-slate-900/60 flex items-center justify-center p-3 sm:p-4">
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-slate-100 overflow-hidden my-auto transform transition-all">
+            
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white p-5 sm:p-6 flex items-start justify-between relative">
+                <div class="flex items-center space-x-3">
+                    <div id="modal-icon-container" class="w-12 h-12 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-2xl border border-brand-500/30">
+                        <i id="modal-icon" class="fa-solid fa-file"></i>
+                    </div>
+                    <div>
+                        <span id="modal-badge" class="text-[10px] uppercase tracking-widest font-extrabold bg-brand-500 text-white px-2 py-0.5 rounded-full">Service Request</span>
+                        <h3 id="modal-title" class="text-xl font-bold mt-1">Service Title</h3>
+                    </div>
+                </div>
+                <button onclick="closeServiceModal()" class="text-slate-400 hover:text-white p-1 transition">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Modal Form Body -->
+            <form id="document-form" onsubmit="handleFormSubmit(event)" class="p-5 sm:p-6 max-h-[75vh] overflow-y-auto">
+                
+                <!-- STEP INDICATOR -->
+                <div class="mb-6 bg-slate-50 p-3 rounded-xl border border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-600">
+                    <span class="flex items-center gap-1.5 text-brand-600"><i class="fa-solid fa-user"></i> Step 1: Contact Info</span>
+                    <i class="fa-solid fa-chevron-right text-slate-300 text-[10px]"></i>
+                    <span class="flex items-center gap-1.5 text-brand-600"><i class="fa-solid fa-list-check"></i> Step 2: Specific Details</span>
+                    <i class="fa-solid fa-chevron-right text-slate-300 text-[10px]"></i>
+                    <span class="flex items-center gap-1.5 text-whatsapp-600"><i class="fa-brands fa-whatsapp"></i> Step 3: Send</span>
+                </div>
+
+                <!-- SECTION 1: UNIVERSAL CUSTOMER DETAILS -->
+                <div class="space-y-4 mb-6">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-1">Customer Information</h4>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="cust-name" required placeholder="Enter full name as in records" 
+                                   class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp Mobile No. <span class="text-red-500">*</span></label>
+                            <input type="tel" id="cust-phone" required placeholder="10-digit mobile number" 
+                                   class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Sub-Service Request Type <span class="text-red-500">*</span></label>
+                            <select id="cust-subtype" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition">
+                                <!-- Options populated dynamically -->
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Email Address (Optional)</label>
+                            <input type="email" id="cust-email" placeholder="For receiving soft copies" 
+                                   class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: DYNAMIC DOCUMENT FIELDS -->
+                <div class="space-y-4 mb-6">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-1">Document Specific Details</h4>
+                    <div id="dynamic-fields-container" class="space-y-4">
+                        <!-- Rendered dynamically depending on selected service -->
+                    </div>
+                </div>
+
+                <!-- SECTION 3: CHECKLIST & NOTES -->
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+                    <h5 class="text-xs font-bold text-amber-800 flex items-center gap-1.5 mb-1.5">
+                        <i class="fa-solid fa-paperclip"></i> Documents to attach in WhatsApp chat:
+                    </h5>
+                    <ul id="checklist-items" class="text-xs text-amber-900 list-disc list-inside space-y-1">
+                        <!-- Dynamic Checklist populated via JavaScript -->
+                    </ul>
+                </div>
+
+                <!-- SUBMIT ACTIONS -->
+                <div class="flex items-center justify-end space-x-3 pt-3 border-t border-slate-100">
+                    <button type="button" onclick="closeServiceModal()" class="px-5 py-2.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-2.5 bg-whatsapp-500 hover:bg-whatsapp-600 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md shadow-whatsapp-500/20 flex items-center gap-2 transition">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Submit Details to WhatsApp
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- SETTINGS MODAL (For Agency / Admin to customize phone number) -->
+    <div id="settings-modal" class="fixed inset-0 z-50 hidden modal-blur bg-slate-900/60 flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 border border-slate-200">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-slate-900"><i class="fa-solid fa-gear text-brand-500"></i> WhatsApp Settings</h3>
+                <button onclick="closeSettingsModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <p class="text-xs text-slate-500 mb-4">Configure the receiver WhatsApp phone number where client leads and filled form submissions will be delivered.</p>
+
+            <div class="mb-4">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Target WhatsApp Phone Number (with Country Code)</label>
+                <input type="text" id="target-phone-input" placeholder="e.g. 919876543210" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                <p class="text-[11px] text-slate-400 mt-1">Include country code without '+' sign (e.g. 919876543210 for India)</p>
+            </div>
+
+            <div class="flex justify-end space-x-2">
+                <button onclick="saveSettings()" class="w-full py-2.5 bg-brand-600 text-white rounded-xl font-bold text-xs shadow hover:bg-brand-700 transition">
+                    Save Receiver Number
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS TOAST -->
+    <div id="toast" class="fixed top-5 right-5 z-50 hidden bg-slate-900 text-white text-xs font-medium px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 border border-slate-700">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-message">Operation successful!</span>
+    </div>
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // CONFIGURATION & STATE MANAGEMENT
+        let targetWhatsAppNumber = "919497751150"; // Default business phone number
+        let activeService = null;
+
+        // SERVICES DATA DEFINITION
+        const servicesData = [
+            {
+                id: 'passport',
+                title: 'Passport Assistance',
+                category: 'Passport Portal',
+                price: '₹199/-',
+                icon: 'fa-passport',
+                color: 'bg-blue-500',
+                badge: 'Online Facilitation',
+                subTypes: [
+                    'Fresh Passport Application',
+                    'Passport Renewal / Re-issue',
+                    'Tatkal Passport Assistance',
+                    'Minor Passport Application',
+                    'Police Clearance Certificate (PCC)'
+                ],
+                description: 'Full form filling, PSK/POPSK appointment slot booking & document checklist guidance.',
+                checklist: [
+                    'Copy of Aadhaar Card / Electoral Photo ID',
+                    'Proof of Birth (Birth Cert / SSLC Book)',
+                    'Existing Passport copy (if renewal/reissue)',
+                    'Passbook / Bank Statement (if applicable)'
+                ],
+                fields: [
+                    { id: 'pass_app_type', label: 'Application Category', type: 'select', options: ['Normal', 'Tatkal'] },
+                    { id: 'pass_existing_no', label: 'Existing Passport No. (If Renewal)', type: 'text', placeholder: 'Enter Passport No or Leave blank' },
+                    { id: 'pass_pob', label: 'Place of Birth (Town/City & District)', type: 'text', placeholder: 'e.g. Kochi, Ernakulam' },
+                    { id: 'pass_occupation', label: 'Occupation Type', type: 'select', options: ['Private Sector', 'Government', 'Student', 'Self Employed', 'Homemaker', 'Others'] }
+                ]
+            },
+            {
+                id: 'aadhaar',
+                title: 'Aadhaar Online Services',
+                category: 'UIDAI Portal',
+                price: '₹199/-',
+                icon: 'fa-id-card',
+                color: 'bg-indigo-500',
+                badge: 'No Biometric',
+                subTypes: [
+                    'Aadhaar Address Update',
+                    'Lost PVC Plastic Card Re-order',
+                    'e-Aadhaar Digital Download',
+                    'Head of Family (HOF) Address Update'
+                ],
+                description: 'Online address correction, official PVC plastic card dispatch to home & fast PDF printouts.',
+                checklist: [
+                    'Address Proof (Ration Card, Electricity Bill, Bank Passbook, Voter ID)',
+                    'Registered Mobile Number (Must be active for OTP verification)'
+                ],
+                fields: [
+                    { id: 'aadh_number', label: 'Aadhaar Card Number', type: 'text', placeholder: '12-digit Aadhaar Number', required: true },
+                    { id: 'aadh_new_address', label: 'New Complete Address with Pin Code (If updating address)', type: 'textarea', placeholder: 'Enter complete house name, locality, post office, pincode' }
+                ]
+            },
+            {
+                id: 'pan',
+                title: 'PAN Card Services',
+                category: 'NSDL / UTIITSL',
+                price: '₹199/-',
+                icon: 'fa-address-card',
+                color: 'bg-emerald-600',
+                badge: 'Online Processing',
+                subTypes: [
+                    'Lost PAN Re-issue / Reprint',
+                    'Name Spelling / DOB Correction',
+                    'Father Name / Photo / Signature Update',
+                    'Instant e-PAN Download / Aadhaar Link'
+                ],
+                description: 'Correction of mistakes, re-printing lost PAN cards, and linking with Aadhaar.',
+                checklist: [
+                    'Copy of Aadhaar Card',
+                    'Existing PAN Card Copy (if available)',
+                    'Passport size Photo & Signature scan (for photo/sign change)'
+                ],
+                fields: [
+                    { id: 'pan_number', label: 'Existing PAN Number (if known)', type: 'text', placeholder: '10-character PAN number' },
+                    { id: 'pan_correction_detail', label: 'Specific Correction Required', type: 'text', placeholder: 'e.g. Correct Date of birth or Name spelling' }
+                ]
+            },
+            {
+                id: 'voter',
+                title: 'Voter ID (EPIC) Services',
+                category: 'NVSP Portal',
+                price: '₹199/-',
+                icon: 'fa-check-to-slot',
+                color: 'bg-amber-600',
+                badge: 'NVSP Facilitation',
+                subTypes: [
+                    'Name / Photo / DOB Correction (Form 8)',
+                    'Address Change / Constituency Transfer',
+                    'Duplicate PVC Voter Card Order',
+                    'e-EPIC Digital Card Download'
+                ],
+                description: 'Form 8 applications for address shifting, details correction & physical card reissue.',
+                checklist: [
+                    'Existing EPIC Voter ID Number',
+                    'Proof of New Address (if transferring location)',
+                    'Clear Passport Size Photograph'
+                ],
+                fields: [
+                    { id: 'voter_epic_no', label: 'EPIC Voter Card Number', type: 'text', placeholder: 'e.g. ABC1234567', required: true },
+                    { id: 'voter_details', label: 'Required Correction / New Address Details', type: 'textarea', placeholder: 'Specify what needs to be changed' }
+                ]
+            },
+            {
+                id: 'dl_rc',
+                title: 'Driving License & RC',
+                category: 'Parivahan Portal',
+                price: '₹199/-',
+                icon: 'fa-car-side',
+                color: 'bg-rose-600',
+                badge: 'RTO Online Portal',
+                subTypes: [
+                    'Driving License Renewal',
+                    'Address Change in License',
+                    'Duplicate DL Application (If Lost)',
+                    'Duplicate Vehicle RC Book Application'
+                ],
+                description: 'Online application processing for RTO license renewals, lost duplicates, and address shifts.',
+                checklist: [
+                    'Existing Driving License or RC copy',
+                    'Medical Certificate Form 1A (for DL renewal if above 40 years)',
+                    'FIR or Police Intimation Copy (for lost DL/RC)'
+                ],
+                fields: [
+                    { id: 'dl_number', label: 'Driving License / Vehicle RC Number', type: 'text', placeholder: 'e.g. KL-07-20200012345', required: true },
+                    { id: 'dl_rto', label: 'RTO Office Location', type: 'text', placeholder: 'e.g. Ernakulam (KL-07) or Kakkanad' }
+                ]
+            },
+            {
+                id: 'ration',
+                title: 'Ration Card Services',
+                category: 'Civil Supplies Portal',
+                price: '₹199/-',
+                icon: 'fa-wheat-awn',
+                color: 'bg-yellow-600',
+                badge: 'e-PDS Portal',
+                subTypes: [
+                    'Addition of New Member (Child/Spouse)',
+                    'Deletion of Member Name',
+                    'Address Shifting / Shop Transfer',
+                    'Digital Ration Card Download'
+                ],
+                description: 'Member additions, removals, address transfer, and e-Ration card print downloads.',
+                checklist: [
+                    'Ration Card Copy',
+                    'Aadhaar Copy of the member to add/remove',
+                    'Birth Certificate (if adding newborn child)',
+                    'Marriage Certificate / Surrender Cert (if adding spouse)'
+                ],
+                fields: [
+                    { id: 'ration_card_no', label: 'Ration Card Number', type: 'text', placeholder: 'Enter 10-digit Ration Card No', required: true },
+                    { id: 'ration_member_info', label: 'Member Name to Add/Remove (with DOB & Aadhaar)', type: 'textarea', placeholder: 'Enter full name, relationship & Aadhaar no of member' }
+                ]
+            },
+            {
+                id: 'certificates',
+                title: 'Certificates & Health Cards',
+                category: 'Sevana / ABHA Portal',
+                price: '₹199/-',
+                icon: 'fa-file-certificate',
+                color: 'bg-teal-600',
+                badge: 'Digital Portal',
+                subTypes: [
+                    'Birth Certificate Download',
+                    'Death Certificate Download',
+                    'Ayushman Bharat ABHA Health Card',
+                    'E-Shram Card Registration / Download'
+                ],
+                description: 'Download registered birth/death certificates from LSGD/Panchayat portals & Health cards.',
+                checklist: [
+                    'Date of Event (Birth/Death)',
+                    'Child / Person Name & Parents Name',
+                    'Hospital Name & Panchayat/Municipality/Corporation Name'
+                ],
+                fields: [
+                    { id: 'cert_person_name', label: 'Person / Child Name', type: 'text', placeholder: 'Full Name as per hospital/registry', required: true },
+                    { id: 'cert_event_date', label: 'Date of Event (Birth / Death)', type: 'date', required: true },
+                    { id: 'cert_location', label: 'Local Body Name (Panchayat / Municipality / Corp)', type: 'text', placeholder: 'e.g. Kalamassery Municipality' }
+                ]
+            }
+        ];
+
+        // INITIALIZE APP ON LOAD
+        window.onload = function() {
+            renderServices(servicesData);
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            updateWhatsAppLinks();
+        };
+
+        // RENDER SERVICES GRID
+        function renderServices(data) {
+            const grid = document.getElementById('services-grid');
+            const noFound = document.getElementById('no-services-found');
+            grid.innerHTML = '';
+
+            if (data.length === 0) {
+                noFound.classList.remove('hidden');
+                return;
+            } else {
+                noFound.classList.add('hidden');
+            }
+
+            data.forEach(service => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group";
+                
+                card.innerHTML = `
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl ${service.color} text-white flex items-center justify-center text-xl shadow-md">
+                                <i class="fa-solid ${service.icon}"></i>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[10px] uppercase font-extrabold tracking-wider bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full border border-slate-200">${service.badge}</span>
+                                <p class="text-xs font-bold text-emerald-600 mt-1">Fee: ${service.price}</p>
+                            </div>
+                        </div>
+
+                        <span class="text-xs font-semibold text-brand-600">${service.category}</span>
+                        <h4 class="text-lg font-bold text-slate-900 group-hover:text-brand-600 transition-colors">${service.title}</h4>
+                        <p class="text-xs text-slate-500 mt-2 leading-relaxed">${service.description}</p>
+
+                        <!-- Sub-Services Tags -->
+                        <div class="mt-4 flex flex-wrap gap-1.5">
+                            ${service.subTypes.map(st => `<span class="text-[10px] bg-slate-50 text-slate-600 border border-slate-200 px-2 py-0.5 rounded-md">${st}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-[11px] font-medium text-slate-500"><i class="fa-solid fa-bolt text-amber-500"></i> Direct WhatsApp Filing</span>
+                        <button onclick="openServiceModal('${service.id}')" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5">
+                            Apply Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // FILTER SERVICES SEARCH
+        function filterServices() {
+            const query = document.getElementById('service-search').value.toLowerCase().trim();
+            const filtered = servicesData.filter(s => 
+                s.title.toLowerCase().includes(query) ||
+                s.category.toLowerCase().includes(query) ||
+                s.description.toLowerCase().includes(query) ||
+                s.subTypes.some(st => st.toLowerCase().includes(query))
+            );
+            renderServices(filtered);
+        }
+
+        function resetSearch() {
+            document.getElementById('service-search').value = '';
+            renderServices(servicesData);
+        }
+
+        // OPEN SERVICE MODAL & DYNAMIC FORM GENERATION
+        function openServiceModal(serviceId) {
+            activeService = servicesData.find(s => s.id === serviceId);
+            if (!activeService) return;
+
+            // Set Header
+            document.getElementById('modal-title').textContent = activeService.title;
+            document.getElementById('modal-badge').textContent = activeService.category;
+            
+            const iconEl = document.getElementById('modal-icon');
+            iconEl.className = `fa-solid ${activeService.icon}`;
+
+            // Populate Sub-Services Select
+            const subTypeSelect = document.getElementById('cust-subtype');
+            subTypeSelect.innerHTML = activeService.subTypes.map(st => `<option value="${st}">${st}</option>`).join('');
+
+            // Build Dynamic Fields
+            const container = document.getElementById('dynamic-fields-container');
+            container.innerHTML = '';
+
+            activeService.fields.forEach(field => {
+                const wrapper = document.createElement('div');
+                const reqAsterisk = field.required ? '<span class="text-red-500">*</span>' : '';
+                
+                let fieldHTML = `<label class="block text-xs font-bold text-slate-700 mb-1">${field.label} ${reqAsterisk}</label>`;
+
+                if (field.type === 'select') {
+                    fieldHTML += `<select id="${field.id}" ${field.required ? 'required' : ''} class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition">
+                        ${field.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
+                    </select>`;
+                } else if (field.type === 'textarea') {
+                    fieldHTML += `<textarea id="${field.id}" rows="2" ${field.required ? 'required' : ''} placeholder="${field.placeholder || ''}" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition"></textarea>`;
+                } else {
+                    fieldHTML += `<input type="${field.type}" id="${field.id}" ${field.required ? 'required' : ''} placeholder="${field.placeholder || ''}" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition">`;
+                }
+
+                wrapper.innerHTML = fieldHTML;
+                container.appendChild(wrapper);
+            });
+
+            // Populate Checklist
+            const checklistContainer = document.getElementById('checklist-items');
+            checklistContainer.innerHTML = activeService.checklist.map(item => `<li>${item}</li>`).join('');
+
+            // Show Modal
+            document.getElementById('service-modal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeServiceModal() {
+            document.getElementById('service-modal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // HANDLE FORM SUBMISSION TO WHATSAPP
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            if (!activeService) return;
+
+            // Collect Contact Details
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const subType = document.getElementById('cust-subtype').value;
+            const email = document.getElementById('cust-email').value.trim();
+
+            // Collect Dynamic Document Fields
+            let dynamicDetailsText = "";
+            activeService.fields.forEach(field => {
+                const el = document.getElementById(field.id);
+                if (el && el.value.trim() !== "") {
+                    dynamicDetailsText += `• *${field.label.replace('*', '').trim()}:* ${el.value.trim()}\n`;
+                }
+            });
+
+            // Format Checklist Text
+            const checklistText = activeService.checklist.map(item => `  ▫ ${item}`).join('\n');
+
+            // CONSTRUCT PRETTIFIED WHATSAPP MESSAGE
+            const message = 
+`*NEW SERVICE REQUEST - SHORGLOBE*
+----------------------------------
+📌 *Document Category:* ${activeService.title}
+📑 *Sub-Service:* ${subType}
+💰 *Processing Fee:* ${activeService.price}
+
+👤 *CUSTOMER DETAILS:*
+• *Name:* ${name}
+• *Phone:* ${phone}
+${email ? `• *Email:* ${email}\n` : ''}
+📋 *DOCUMENT SPECIFIC DETAILS:*
+${dynamicDetailsText || '• None provided\n'}
+📄 *REQUIRED DOCUMENTS TO ATTACH IN CHAT:*
+${checklistText}
+
+----------------------------------
+_Sent automatically via Shorglobe Digital Web App_`;
+
+            // Encode for URL
+            const encodedMsg = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${targetWhatsAppNumber}?text=${encodedMsg}`;
+
+            // Show Toast & Launch WhatsApp
+            showToast("Opening WhatsApp with your details...", "success");
+
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+                closeServiceModal();
+                document.getElementById('document-form').reset();
+            }, 800);
+        }
+
+        // SETTINGS MODAL & PHONE NUMBER LOGIC
+        function openSettingsModal() {
+            document.getElementById('target-phone-input').value = targetWhatsAppNumber;
+            document.getElementById('settings-modal').classList.remove('hidden');
+        }
+
+        function closeSettingsModal() {
+            document.getElementById('settings-modal').classList.add('hidden');
+        }
+
+        function saveSettings() {
+            const inputVal = document.getElementById('target-phone-input').value.replace(/[^0-9]/g, '');
+            if (inputVal.length < 10) {
+                showToast("Please enter a valid phone number with country code", "error");
+                return;
+            }
+            targetWhatsAppNumber = inputVal;
+            updateWhatsAppLinks();
+            closeSettingsModal();
+            showToast("WhatsApp receiver number updated!", "success");
+        }
+
+        function updateWhatsAppLinks() {
+            const formatted = "+" + targetWhatsAppNumber.replace(/(\d{2})(\d{5})(\d{5})/, "$1 $2 $3");
+            document.getElementById('display-phone-nav').textContent = formatted;
+            
+            // Update floating button
+            const floatingBtn = document.getElementById('floating-whatsapp-btn');
+            floatingBtn.href = `https://wa.me/${targetWhatsAppNumber}?text=${encodeURIComponent("Hello Shorglobe, I have an inquiry regarding online document services.")}`;
+        }
+
+        // TOAST NOTIFICATION UTILITY
+        function showToast(msg, type = "success") {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastMsg.textContent = msg;
+            if (type === "error") {
+                toastIcon.className = "fa-solid fa-circle-xmark text-rose-400 text-lg";
+            } else {
+                toastIcon.className = "fa-solid fa-circle-check text-emerald-400 text-lg";
+            }
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
